@@ -39,9 +39,16 @@ def durationToMinutes():
     return day, hour, minute, minutes
 
 
-def minutesToDayMinSec(minutes):
+def minutesToDayMinSec(enter_minutes = 0):
+    if enter_minutes == 0:
+        while True:
+            try:
+                enter_minutes = int(input("Enter how many minutes: "))
+                break
+            except ValueError:
+                print("Enter only integers")
     #Using math, calculating days, hours, minutes
-    return [minutes // (24 * 60), minutes // 60 % 24, minutes % 60]
+    return enter_minutes // (24 * 60), enter_minutes // 60 % 24, enter_minutes % 60, enter_minutes
 
 
 def timeDifference():
@@ -78,13 +85,7 @@ print(f"The {day1} days, {hour1} hours and {minute1} minutes takes altogether {m
 print()
 
 #Taks #3
-while True:
-    try:
-        min_input = int(input("Enter how many minutes: "))
-        break
-    except ValueError:
-        print("Enter only integers")
-day, hour, minute = minutesToDayMinSec(min_input) #returns an array with values
+day, hour, minute, min_input = minutesToDayMinSec() #returns an array with values
 print(f"{min_input} minutes are {day} days, {hour} hours and {minute} minutes")
 print()
 
